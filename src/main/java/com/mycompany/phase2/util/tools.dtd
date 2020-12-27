@@ -1,0 +1,51 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT tools (tool)+>
+<!ATTLIST tools
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT tool (category,type,name,description,webbased,price,subjects,
+                author,url)>
+<!ATTLIST tool
+  xmlns CDATA #FIXED ''
+  id CDATA #REQUIRED>
+
+<!ELEMENT category (#PCDATA)>
+<!ATTLIST category
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT type (#PCDATA)>
+<!ATTLIST type
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST name
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT description (#PCDATA)>
+<!ATTLIST description
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT webbased (#PCDATA)>
+<!ATTLIST webbased
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT price (#PCDATA)>
+<!ATTLIST price
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT subjects (subject)+>
+<!ATTLIST subjects
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT author EMPTY>
+<!ATTLIST author
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT url (#PCDATA)>
+<!ATTLIST url
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT subject (#PCDATA)>
+<!ATTLIST subject
+  xmlns CDATA #FIXED ''>

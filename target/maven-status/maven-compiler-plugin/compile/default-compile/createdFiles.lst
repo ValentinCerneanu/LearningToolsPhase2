@@ -1,0 +1,8 @@
+com\mycompany\phase2\util\XmlParser.class
+com\mycompany\phase2\views\AddView.class
+com\mycompany\phase2\controllers\ListController.class
+com\mycompany\phase2\views\ListView.class
+com\mycompany\phase2\controllers\AddController.class
+com\mycompany\phase2\util\SAXParser.class
+com\mycompany\phase2\model\Tool.class
+com\mycompany\phase2\views\ShowDetailsView.class

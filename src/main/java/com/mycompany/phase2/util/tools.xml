@@ -1,0 +1,303 @@
+<?xml-stylesheet type="text/xsl" href="checkType.xsl" ?>
+<tools>
+    <tool>
+        <category>web resource (videos)</category>
+        <type>learning</type>
+        <name>YouTube</name>
+        <description>YouTube is an American online video-sharing platform headquartered in San Bruno, California.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/youtube/</url>
+    </tool>
+    <tool>
+        <category>video meeting platform</category>
+        <type>teaching</type>
+        <name>Zoom</name>
+        <description>Zoom is a videotelephony software program developed by Zoom Video Communications.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/zoom/</url>
+    </tool>
+    <tool>
+        <category>search engine</category>
+        <type>learning</type>
+        <name>Google Search</name>
+        <description>Google is the largest search engine available on the web.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/google-search/</url>
+    </tool>
+    <tool>
+        <category>office tool / suite</category>
+        <type>teaching</type>
+        <name>PowerPoint</name>
+        <description>PowerPoint is part of Microsoft Office Suite.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/powerpoint/</url>
+    </tool>
+    <tool>
+        <category>collaboration platform</category>
+        <type>teaching</type>
+        <name>Microsoft Teams</name>
+        <description>Microsoft Teams is a proprietary business communication platform developed by Microsoft, as part of the Microsoft 365 family of products.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/microsoft-teams/</url>
+    </tool>
+    <tool>
+        <category>office tool / suite</category>
+        <type>teaching</type>
+        <name>Word</name>
+        <description>Word is part of Microsoft Office Suite.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/word/</url>
+    </tool>
+    <tool>
+        <category>office suite | file sharing platform</category>
+        <type>teaching</type>
+        <name>Google Docs &amp; Drive</name>
+        <description>Google Drive is a file storage and synchronization service developed by Google.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/google-docs-drive/</url>
+    </tool>
+    <tool>
+        <category>social network / community</category>
+        <type>teaching</type>
+        <name>LinkedIn</name>
+        <description>LinkedIn is an American business and employment-oriented online service that operates via websites and mobile apps.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/linkedin/</url>
+    </tool>
+    <tool>
+        <category>social network / community</category>
+        <type>teaching</type>
+        <name>Twitter</name>
+        <description>Twitter is an online social media platform.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/twitter/</url>
+    </tool>
+    <tool>
+        <category>chat tool</category>
+        <type>learning</type>
+        <name>WhatsApp</name>
+        <description>WhatsApp is the most widely used chat application on the globe.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/whatsapp/</url>
+    </tool>
+    <tool>
+        <category>web resource</category>
+        <type>learning</type>
+        <name>Wikipedia</name>
+        <description>Wikipedia is the world largest project aimed at creating a free encyclopedia.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/wikipedia/</url>
+    </tool>
+    <tool>
+        <category>social network / community</category>
+        <type>teaching</type>
+        <name>Facebook</name>
+        <description>Facebook is the most well-known social platform.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/facebook/</url>
+    </tool>
+    <tool>
+        <category>office tool / suite</category>
+        <type>teaching</type>
+        <name>Excel</name>
+        <description>Excel is part of Microsoft's Office Suite.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/excel/</url>
+    </tool>
+    <tool>
+        <category>blogging/website platform</category>
+        <type>teaching</type>
+        <name>WordPress</name>
+        <description>I am not sure what this is.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/wordpress/</url>
+    </tool>
+    <tool>
+        <category>learning platform / LMS</category>
+        <type>teaching</type>
+        <name>Google Classroom</name>
+        <description>Google Classroom is a free web service developed by Google for schools that aims to simplify creating, distributing, and grading assignments.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/google-classroom/</url>
+    </tool>
+    <tool>
+        <category>video meeting platform</category>
+        <type>teaching</type>
+        <name>Google Meet</name>
+        <description>Google Meet (formerly known as Hangouts Meet) is a video-communication service developed by Google.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/google-hangouts/</url>
+    </tool>
+    <tool>
+        <category>collaboration platform</category>
+        <type>teaching</type>
+        <name>Slack</name>
+        <description>Slack is a proprietary business communication platform developed by American software company Slack Technologies.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/slack/</url>
+    </tool>
+    <tool>
+        <category>content dev tool (graphics)</category>
+        <type>learning</type>
+        <name>Canva</name>
+        <description>Canva is a graphic design platform, used to create social media graphics, presentations, posters, documents and other visual content.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/canva/</url>
+    </tool>
+    <tool>
+        <category>chat tool</category>
+        <type>teaching</type>
+        <name>Skype</name>
+        <description>Skype is a telecommunications application that specializes in providing video chat and voice calls between computers, tablets, mobile devices, the Xbox One console, and smartwatches over the Internet.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/skype/</url>
+    </tool>
+    <tool>
+        <category>collaboration platform</category>
+        <type>teaching</type>
+        <name>Trello</name>
+        <description>Trello is a web-based Kanban-style list-making application which is a subsidiary of Atlassian.</description>
+        <webbased>True</webbased>
+        <price>Free</price>
+        <subjects>
+            <subject>Math</subject>
+            <subject>Linear Algebra</subject>
+            <subject>SDT</subject>
+        </subjects>
+        <author></author>
+        <url>https://www.toptools4learning.com/trello/</url>
+    </tool>
+</tools>
