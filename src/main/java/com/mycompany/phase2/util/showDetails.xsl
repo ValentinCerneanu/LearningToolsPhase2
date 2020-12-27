@@ -3,7 +3,7 @@
 	xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
 <xsl:template match="/">
-	<table border="1">
+	<table border="1" class="table">
 		<tr bgcolor="#9acd32">
 			<th>Name</th>
 			<th>Description</th>
