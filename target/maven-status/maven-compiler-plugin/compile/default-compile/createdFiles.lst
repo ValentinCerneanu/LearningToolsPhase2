@@ -1,4 +1,6 @@
+com\mycompany\phase2\controllers\UploadRDFController.class
 com\mycompany\phase2\util\XmlParser.class
+com\mycompany\phase2\views\UploadRDF.class
 com\mycompany\phase2\views\AddView.class
 com\mycompany\phase2\controllers\ListController.class
 com\mycompany\phase2\views\ListView.class

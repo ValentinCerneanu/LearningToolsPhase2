@@ -38,6 +38,9 @@
                                  <li class="nav-item active">     
                                      <a class="nav-link" href="AddView">Add new tool</a>
                                  </li>
+                                 <li class="nav-item active">
+                                     <a class="nav-link" href="UploadRDF">Upload RDF file</a>
+                                 </li>
                              </ul>
                      </nav>
                  </div>

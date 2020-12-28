@@ -16,6 +16,10 @@
         <servlet-name>ShowDetailsController</servlet-name>
         <servlet-class>com.mycompany.phase2.controllers.ShowDetailsController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadRDF</servlet-name>
+        <servlet-class>com.mycompany.phase2.views.UploadRDF</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ShowDetailsView</servlet-name>
         <url-pattern>/ShowDetailsView</url-pattern>
@@ -40,6 +44,14 @@
         <servlet-name>ListView</servlet-name>
         <url-pattern>/ListView</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadRDF</servlet-name>
+        <url-pattern>/UploadRDF</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadRDFController</servlet-name>
+        <url-pattern>/UploadRDFController</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ListController</servlet-name>
         <servlet-class>com.mycompany.phase2.controllers.ListController</servlet-class>
@@ -47,6 +59,10 @@
     <servlet>
         <servlet-name>AddController</servlet-name>
         <servlet-class>com.mycompany.phase2.controllers.AddController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadRDFController</servlet-name>
+        <servlet-class>com.mycompany.phase2.controllers.UploadRDFController</servlet-class>
     </servlet>
     <session-config>
         <session-timeout>
