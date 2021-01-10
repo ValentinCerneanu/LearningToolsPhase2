@@ -7,6 +7,7 @@ package com.mycompany.phase2.views;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,8 @@ public class UploadRDF extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
-
+            ArrayList<String> toolsForEngineering = (ArrayList<String>) request.getAttribute("toolsForEngineering");
+            
             PrintWriter out = response.getWriter();
             out.println("<!DOCTYPE html>\n"
                     + "<html>\n"
@@ -100,9 +102,34 @@ public class UploadRDF extends HttpServlet {
                     + "             </div>\n" 
                     + "             <div class=\"col\">\n" 
                     + "             </div>\n" 
-                    + "        </div>" 
-               
-                    + "    </div>\n"
+                    + "        </div>");
+                    
+            if(toolsForEngineering != null)
+                out.println(
+                          "        <div class=\"row top-buffer\">"
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "             <div class=\"col-10\">" 
+                        + "                 <h6 id=\"\">Tools for studying engineering:</h6>\n"  
+                        + "             </div>\n" 
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "        </div>");
+                        
+                for(String toolForEngineering:toolsForEngineering)
+                    out.println(
+                          "        <div class=\"row\">"
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "             <div class=\"col-10\">\n" 
+                        +              toolForEngineering  
+                        + "             </div>\n" 
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "        </div>");
+            
+            out.println(
+                      "    </div>\n"
                     + "    </body>\n"
                     + "</html>\n");
         } catch (IOException e) {

@@ -39,6 +39,8 @@ import java.awt.Paint;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.rdf.model.impl.ModelCom;
@@ -80,7 +82,7 @@ public class UploadRDFController extends HttpServlet{
         } else {
             System.out.println("No vcards were found in the database");
         }
-        
+        ArrayList<String> toolsForEngineering = new ArrayList<>();
         StmtIterator iter = model.listStatements();
         while (iter.hasNext()) {
             Statement stmt      = iter.nextStatement();  // get next statement
@@ -99,12 +101,14 @@ public class UploadRDFController extends HttpServlet{
             
             if(stmt.toString().contains("engineering") && predicate.toString().contains("member"))
             {
-                System.out.println("daaaaa");
+                System.out.println("toolsForEngineering:");
+                toolsForEngineering.add(stmt.toString());
                 System.out.println(stmt);
             }
         }
-        
-        processRequest(request, response);
+        request.setAttribute("toolsForEngineering", toolsForEngineering);
+        RequestDispatcher rd = request.getRequestDispatcher("UploadRDF");
+        rd.forward(request, response);
     }
     
     Transformer<MyNode,Paint> vertexPaint = new Transformer<MyNode,Paint>() {
@@ -150,7 +154,7 @@ public class UploadRDFController extends HttpServlet{
         }
         
         Layout<MyNode, String> layout = new FRLayout(g);
-        layout.setSize(new Dimension(1900, 1000));
+        layout.setSize(new Dimension(1600, 900));
         // The BasicVisualizationServer<V,E> is parameterized by the edge types
         BasicVisualizationServer<MyNode,String> vv = new BasicVisualizationServer<>(layout);
         vv.setPreferredSize(new Dimension(1920, 1080)); //Sets the viewing area size
