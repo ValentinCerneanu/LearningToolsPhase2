@@ -5,6 +5,7 @@
  */
 package com.mycompany.phase2.controllers;
 
+import com.mycompany.phase2.model.MyNode;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
@@ -38,6 +39,10 @@ import java.awt.Paint;
 
 import javax.swing.*;
 import java.awt.*;
+import org.apache.jena.rdf.model.ResIterator;
+import org.apache.jena.rdf.model.ResourceFactory;
+import org.apache.jena.rdf.model.impl.ModelCom;
+import org.apache.jena.rdf.model.impl.ResourceImpl;
 
 /**
  *
@@ -61,42 +66,58 @@ public class UploadRDFController extends HttpServlet{
         
         buildGraph(model);
         
+        
+        Property engineeringProperty = ResourceFactory.createProperty("http://www.toptools4learning.com/domain/engineering");
+        
+        ResIterator iterEngineeringProperty = model.listSubjectsWithProperty(engineeringProperty);
+        if (iterEngineeringProperty.hasNext()) {
+            System.out.println("The database contains vcards for:");
+            while (iterEngineeringProperty.hasNext()) {
+                System.out.println("  " + iterEngineeringProperty.nextResource()
+                                              .getProperty(engineeringProperty)
+                                              .getString());
+            }
+        } else {
+            System.out.println("No vcards were found in the database");
+        }
+        
         StmtIterator iter = model.listStatements();
         while (iter.hasNext()) {
             Statement stmt      = iter.nextStatement();  // get next statement
-            Resource  subject   = stmt.getSubject();     // get the subject
+            Resource  subject   = stmt.getSubject();     // get the subject 
             Property  predicate = stmt.getPredicate();   // get the predicate
             RDFNode   object    = stmt.getObject();      // get the object
-
+            
             System.out.print(subject.toString());
             System.out.print(" " + predicate.toString() + " ");
             if (object instanceof Resource) {
-               System.out.print(object.toString());
+                System.out.print(object.toString());
             } else {
                 // object is a literal
                 System.out.print(" \"" + object.toString() + "\"");
             }
-
-            System.out.println(" .");
+            
+            if(stmt.toString().contains("engineering") && predicate.toString().contains("member"))
+            {
+                System.out.println("daaaaa");
+                System.out.println(stmt);
+            }
         }
         
         processRequest(request, response);
     }
     
-    Transformer<RDFNode,Paint> vertexPaintGreen = new Transformer<RDFNode,Paint>() {
-        public Paint transform(RDFNode i) {
-            return Color.GREEN;
-        }
-    };
-    
-    Transformer<RDFNode,Paint> vertexPaintRed = new Transformer<RDFNode,Paint>() {
-        public Paint transform(RDFNode i) {
-            return Color.RED;
+    Transformer<MyNode,Paint> vertexPaint = new Transformer<MyNode,Paint>() {
+        public Paint transform(MyNode node) {
+            if(node.isForEngineering())
+                return Color.GREEN;
+            else
+                return Color.RED;
         }
     };
     
     private void buildGraph(Model model){
-        DirectedGraph<RDFNode,String> g = new DirectedSparseGraph<>();
+        DirectedGraph<MyNode,String> g = new DirectedSparseGraph<>();
         boolean includeLiterals = true;
         
         StmtIterator iter = model.listStatements();
@@ -105,25 +126,38 @@ public class UploadRDFController extends HttpServlet{
             Statement stm = iter.nextStatement();
             RDFNode sub = stm.getSubject();
             RDFNode obj = stm.getObject();
-            g.addVertex(sub);
+            
+            Resource r = (Resource) sub;
+            ResourceImpl ri = (ResourceImpl) r;
+            ModelCom mc = (ModelCom) ri.getModel();
+            MyNode subNode = new MyNode(ri.asNode(), mc);
+            
+            Property  predicate = stm.getPredicate();
+            if(stm.toString().contains("engineering") && predicate.toString().contains("member"))
+            {
+                subNode.setforEngineering(true);
+            }
+            
+            g.addVertex(subNode);
             if(includeLiterals || !obj.isLiteral()){
-                g.addVertex(obj);
+                ModelCom mcObj = (ModelCom) obj.getModel();
+                MyNode objNode = new MyNode(obj.asNode(), mcObj);
                 
-                Property  predicate = stm.getPredicate();
-                g.addEdge(String.valueOf(i) + " " + predicate.toString(), sub, obj, EdgeType.DIRECTED);
+                g.addVertex(objNode);
+                g.addEdge(String.valueOf(i) + " " + predicate.toString(), subNode, objNode, EdgeType.DIRECTED);
             }
             i++;
         }
         
-        Layout<RDFNode, String> layout = new FRLayout(g);
+        Layout<MyNode, String> layout = new FRLayout(g);
         layout.setSize(new Dimension(1900, 1000));
         // The BasicVisualizationServer<V,E> is parameterized by the edge types
-        BasicVisualizationServer<RDFNode,String> vv = new BasicVisualizationServer<>(layout);
+        BasicVisualizationServer<MyNode,String> vv = new BasicVisualizationServer<>(layout);
         vv.setPreferredSize(new Dimension(1920, 1080)); //Sets the viewing area size
         
         vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
         vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
-        vv.getRenderContext().setVertexFillPaintTransformer(vertexPaintGreen);
+        vv.getRenderContext().setVertexFillPaintTransformer(vertexPaint);
 
         JFrame frame = new JFrame("Simple Graph View");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
