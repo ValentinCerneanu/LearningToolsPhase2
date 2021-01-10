@@ -31,6 +31,10 @@ import edu.uci.ics.jung.graph.DirectedGraph;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 import edu.uci.ics.jung.visualization.BasicVisualizationServer;
+import edu.uci.ics.jung.visualization.decorators.*;
+
+import org.apache.commons.collections15.Transformer;
+import java.awt.Paint;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,8 +47,7 @@ import java.awt.*;
 @WebServlet(name = "UploadRDFController")
 public class UploadRDFController extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-        //String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+        Part filePart = request.getPart("file"); 
         InputStream fileContent = filePart.getInputStream();
       
         Model model = ModelFactory.createDefaultModel();
@@ -80,11 +83,24 @@ public class UploadRDFController extends HttpServlet{
         processRequest(request, response);
     }
     
+    Transformer<RDFNode,Paint> vertexPaintGreen = new Transformer<RDFNode,Paint>() {
+        public Paint transform(RDFNode i) {
+            return Color.GREEN;
+        }
+    };
+    
+    Transformer<RDFNode,Paint> vertexPaintRed = new Transformer<RDFNode,Paint>() {
+        public Paint transform(RDFNode i) {
+            return Color.RED;
+        }
+    };
+    
     private void buildGraph(Model model){
-        DirectedGraph<RDFNode,Statement> g = new DirectedSparseGraph<>();
+        DirectedGraph<RDFNode,String> g = new DirectedSparseGraph<>();
         boolean includeLiterals = true;
         
         StmtIterator iter = model.listStatements();
+        int i=0;
         while(iter.hasNext()){
             Statement stm = iter.nextStatement();
             RDFNode sub = stm.getSubject();
@@ -92,15 +108,22 @@ public class UploadRDFController extends HttpServlet{
             g.addVertex(sub);
             if(includeLiterals || !obj.isLiteral()){
                 g.addVertex(obj);
-                g.addEdge(stm, sub, obj, EdgeType.DIRECTED);
+                
+                Property  predicate = stm.getPredicate();
+                g.addEdge(String.valueOf(i) + " " + predicate.toString(), sub, obj, EdgeType.DIRECTED);
             }
+            i++;
         }
         
-        Layout<Integer, String> layout = new FRLayout(g);
-        layout.setSize(new Dimension(800, 800)); // sets the initial size of the space
+        Layout<RDFNode, String> layout = new FRLayout(g);
+        layout.setSize(new Dimension(1900, 1000));
         // The BasicVisualizationServer<V,E> is parameterized by the edge types
-        BasicVisualizationServer<Integer,String> vv = new BasicVisualizationServer<>(layout);
-        vv.setPreferredSize(new Dimension(450,450)); //Sets the viewing area size
+        BasicVisualizationServer<RDFNode,String> vv = new BasicVisualizationServer<>(layout);
+        vv.setPreferredSize(new Dimension(1920, 1080)); //Sets the viewing area size
+        
+        vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
+        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+        vv.getRenderContext().setVertexFillPaintTransformer(vertexPaintGreen);
 
         JFrame frame = new JFrame("Simple Graph View");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
