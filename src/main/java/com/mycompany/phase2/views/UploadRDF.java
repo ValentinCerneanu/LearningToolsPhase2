@@ -30,6 +30,7 @@ public class UploadRDF extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
             ArrayList<String> toolsForEngineering = (ArrayList<String>) request.getAttribute("toolsForEngineering");
+            ArrayList<String> socialNetworks = (ArrayList<String>) request.getAttribute("socialNetworks");
             
             PrintWriter out = response.getWriter();
             out.println("<!DOCTYPE html>\n"
@@ -123,6 +124,30 @@ public class UploadRDF extends HttpServlet {
                         + "             </div>\n" 
                         + "             <div class=\"col-10\">\n" 
                         +              toolForEngineering  
+                        + "             </div>\n" 
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "        </div>");
+                
+            if(socialNetworks != null)
+                out.println(
+                          "        <div class=\"row top-buffer\">"
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "             <div class=\"col-10\">" 
+                        + "                 <h6 id=\"\">Social Networks:</h6>\n"  
+                        + "             </div>\n" 
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "        </div>");
+                        
+                for(String socialNetwork:socialNetworks)
+                    out.println(
+                          "        <div class=\"row\">"
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "             <div class=\"col-10\">\n" 
+                        +              socialNetwork  
                         + "             </div>\n" 
                         + "             <div class=\"col\">\n" 
                         + "             </div>\n" 
