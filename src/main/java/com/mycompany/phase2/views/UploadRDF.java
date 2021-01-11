@@ -31,6 +31,7 @@ public class UploadRDF extends HttpServlet {
         try {
             ArrayList<String> toolsForEngineering = (ArrayList<String>) request.getAttribute("toolsForEngineering");
             ArrayList<String> socialNetworks = (ArrayList<String>) request.getAttribute("socialNetworks");
+            ArrayList<String> top10Tools = (ArrayList<String>) request.getAttribute("top10Tools");
             
             PrintWriter out = response.getWriter();
             out.println("<!DOCTYPE html>\n"
@@ -106,6 +107,7 @@ public class UploadRDF extends HttpServlet {
                     + "        </div>");
                     
             if(toolsForEngineering != null)
+            {
                 out.println(
                           "        <div class=\"row top-buffer\">"
                         + "             <div class=\"col\">\n" 
@@ -128,8 +130,10 @@ public class UploadRDF extends HttpServlet {
                         + "             <div class=\"col\">\n" 
                         + "             </div>\n" 
                         + "        </div>");
-                
+            }
+            
             if(socialNetworks != null)
+            {
                 out.println(
                           "        <div class=\"row top-buffer\">"
                         + "             <div class=\"col\">\n" 
@@ -152,6 +156,33 @@ public class UploadRDF extends HttpServlet {
                         + "             <div class=\"col\">\n" 
                         + "             </div>\n" 
                         + "        </div>");
+            }
+            
+            if(top10Tools != null)
+            {
+                out.println(
+                          "        <div class=\"row top-buffer\">"
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "             <div class=\"col-10\">" 
+                        + "                 <h6 id=\"\">Tools present in Top 10:</h6>\n"  
+                        + "             </div>\n" 
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "        </div>");
+                        
+                for(String top10Tool:top10Tools)
+                    out.println(
+                          "        <div class=\"row\">"
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "             <div class=\"col-10\">\n" 
+                        +              top10Tool  
+                        + "             </div>\n" 
+                        + "             <div class=\"col\">\n" 
+                        + "             </div>\n" 
+                        + "        </div>");
+            }
             
             out.println(
                       "    </div>\n"

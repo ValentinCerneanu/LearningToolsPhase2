@@ -82,8 +82,11 @@ public class UploadRDFController extends HttpServlet{
         } else {
             System.out.println("No vcards were found in the database");
         }
+        
         ArrayList<String> toolsForEngineering = new ArrayList<>();
         ArrayList<String> socialNetworks = new ArrayList<>();
+        ArrayList<String> top10Tools = new ArrayList<>();
+        
         StmtIterator iter = model.listStatements();
         while (iter.hasNext()) {
             Statement stmt      = iter.nextStatement();  // get next statement
@@ -107,6 +110,14 @@ public class UploadRDFController extends HttpServlet{
                 System.out.println(stmt);
             }
             
+            if(stmt.toString().contains("placement"))
+            {
+                if(Integer.parseInt(object.toString()) <= 10)
+                    top10Tools.add(stmt.toString());
+                System.out.println("top10Tools:");
+                System.out.println(stmt);
+            }
+            
             if(stmt.toString().contains("social_network") && predicate.toString().contains("member"))
             {
                 System.out.println("social_networks:");
@@ -116,6 +127,7 @@ public class UploadRDFController extends HttpServlet{
         }
         request.setAttribute("toolsForEngineering", toolsForEngineering);
         request.setAttribute("socialNetworks", socialNetworks);
+        request.setAttribute("top10Tools", top10Tools);
         RequestDispatcher rd = request.getRequestDispatcher("UploadRDF");
         rd.forward(request, response);
     }
