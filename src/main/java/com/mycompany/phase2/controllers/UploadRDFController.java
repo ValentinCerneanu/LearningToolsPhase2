@@ -41,6 +41,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
+import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.rdf.model.impl.ModelCom;
@@ -68,6 +69,7 @@ public class UploadRDFController extends HttpServlet{
         
         buildGraph(model);
         
+        //readOWL();
         
         Property engineeringProperty = ResourceFactory.createProperty("http://www.toptools4learning.com/domain/engineering");
         
@@ -201,5 +203,12 @@ public class UploadRDFController extends HttpServlet{
         } catch (Exception ex) {
             Logger.getLogger(ListController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void readOWL(){
+        String path = "owl/ontology.owx" ;
+        Model model = ModelFactory.createOntologyModel(OntModelSpec.RDFS_MEM_RDFS_INF);
+        model.read(path);
+        model.write(System.out) ;
     }
 }
